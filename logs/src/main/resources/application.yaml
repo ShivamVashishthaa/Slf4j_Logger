@@ -1,23 +1,25 @@
 spring:
   application:
     name: logs
-# application.yml
+
 logging:
   level:
-    root: DEBUG                          # Default level for all
+    root: ERROR                          # Default level for all
     com.shivam.logs.test: DEBUG                  # Package specific
 #    com.example.controller: TRACE       # Class specific
 #    org.springframework: WARN           # Spring framework
 #    org.hibernate: ERROR               # Hibernate
 
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
-  file:
-    name: logs/logs/application.log     # Log file location
-    max-size: 10MB                      # Max file size
-    max-history: 30                     # Days to keep
+# when we are using logback-spring below config will override
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#
+#  file:
+#    name: logs/logs/application.log     # Log file location
+#    max-size: 10MB                      # Max file size
+#    max-history: 30                     # Days to keep
 #
 #  # JSON logging for production (optional)
 #  # group: com.example

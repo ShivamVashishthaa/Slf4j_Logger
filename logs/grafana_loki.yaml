@@ -16,7 +16,24 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    depends_on:
+      - loki
+
+  alloy:
+    image: grafana/alloy:latest
+    container_name: alloy
+
+    volumes:
+      - ./alloy-config.alloy:/etc/alloy/config.alloy
+      - /home/shivamgrey/localStorage/intellij/Slf4j_Logger/logs/logs:/var/log/app
+
+    command:
+      - run
+      - /etc/alloy/config.alloy
+
     depends_on:
       - loki
